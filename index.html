@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#21172b">
+<title>A Date I Never Forgot — From Mark</title>
+<style>
+:root{--plum:#21172b;--rose:#f3c8da;--pink:#f8eaf1;--ink:#43283a;--muted:#806a79;--deep:#713c60}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Georgia,'Times New Roman',serif;background:radial-gradient(circle at top,#60435c 0,#21172b 55%,#17121e 100%);color:#fff;display:flex;justify-content:center;align-items:center;padding:20px 14px;overflow-x:hidden}
+main{width:min(100%,520px);margin:auto}
+.card{background:#fffafc;color:var(--ink);border-radius:26px;overflow:hidden;box-shadow:0 22px 70px #09060c88;position:relative;min-height:570px}
+.hero{padding:27px 24px 22px;text-align:center;background:linear-gradient(145deg,#39253d,#21172b)}
+.eyebrow{letter-spacing:2px;text-transform:uppercase;font:11px Arial,sans-serif;color:#f3c8da}
+h1{font-size:clamp(30px,8vw,42px);line-height:1.08;margin:12px 0;color:#ffe5ef;font-weight:normal}
+.hero p{color:#f4e8f0;line-height:1.55;margin:0 auto;max-width:390px;font-size:15px}
+.heart{font-size:27px;margin-top:10px;display:block}
+.progress-wrap{height:5px;background:#ead9e2}
+.progress{height:5px;width:0;background:#b45d88;transition:width .35s}
+.content{padding:26px 23px 25px;display:flex;flex-direction:column;min-height:390px}
+.step-label{text-align:center;color:#a15b7c;font:12px Arial,sans-serif;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:14px}
+.question{font-size:clamp(22px,5.7vw,28px);line-height:1.35;text-align:center;font-weight:normal;margin:0 auto 25px;max-width:420px;min-height:112px;display:flex;align-items:center;justify-content:center}
+.choices{display:grid;gap:12px;margin:auto 0 0}
+.choice{border:1px solid #dfc4d2;background:#fff;color:#5d3b50;border-radius:16px;padding:15px 17px;font:600 15px Arial,sans-serif;cursor:pointer;transition:transform .15s,background .15s;min-height:52px}
+.choice:hover{transform:translateY(-2px);background:#fff2f7}
+.choice:focus-visible,.primary:focus-visible{outline:3px solid #c879a0;outline-offset:3px}
+.primary{width:100%;border:0;border-radius:999px;padding:15px 18px;background:var(--deep);color:white;font:bold 15px Arial,sans-serif;cursor:pointer;margin-top:20px}
+.small-note{text-align:center;color:var(--muted);font:12px Arial,sans-serif;line-height:1.5;margin:15px 5px 0}
+.final{background:#f8eaf1;border-radius:18px;padding:22px 18px;text-align:center}
+.final h2{font-size:27px;margin:0 0 15px;color:#9d315f}
+.final p{line-height:1.65;margin:11px 0;color:#57364b}
+.final .signature{font-style:italic;font-size:18px;margin-top:16px}
+.final-question{font-size:21px;color:#713c60;margin:22px 0 15px}
+.final-choices{display:grid;gap:10px}
+.final-choices .choice{border-radius:999px}
+.hidden{display:none!important}
+footer{text-align:center;color:#e8d4e0;font:12px Arial,sans-serif;margin:17px 0 0}
+.reaction{position:fixed;inset:0;background:#1b1025cc;display:flex;align-items:center;justify-content:center;z-index:10;opacity:0;pointer-events:none;transition:opacity .18s}
+.reaction.show{opacity:1}
+.reaction-bubble{font-size:clamp(72px,20vw,112px);text-align:center;animation:pop .55s ease both;filter:drop-shadow(0 8px 18px #0005)}
+.reaction-caption{font: bold 17px Arial,sans-serif;color:#fff;text-align:center;margin-top:12px}
+@keyframes pop{0%{transform:scale(.2) rotate(-15deg)}65%{transform:scale(1.18) rotate(5deg)}100%{transform:scale(1)}}
+.float{position:fixed;bottom:-35px;z-index:11;pointer-events:none;animation:floatUp 1.6s ease-out forwards;font-size:25px}
+@keyframes floatUp{to{transform:translateY(-110vh) rotate(35deg);opacity:0}}
+@media(max-width:380px){.content{padding:22px 17px}.card{min-height:550px}}
+</style>
+</head>
+<body>
+<main>
+<section class="card">
+  <header class="hero">
+    <div class="eyebrow">A little surprise for you</div>
+    <h1>Hey, beautiful! ❤️</h1>
+    <p>Can I ask you something? Someone has been thinking about that promised date...</p>
+    <span class="heart">♡</span>
+  </header>
+  <div class="progress-wrap"><div class="progress" id="progress"></div></div>
+  <div class="content">
+    <section id="welcome">
+      <div class="step-label">Just a little something from Mark</div>
+      <h2 class="question">I've got three little questions for you. Ready? 😊</h2>
+      <button class="primary" id="start">Let's go ❤️</button>
+      <p class="small-note">Your choices will be included in a WhatsApp message to Mark when you finish.</p>
+    </section>
+
+    <section id="quiz" class="hidden">
+      <div class="step-label" id="stepLabel">Question 1 of 3</div>
+      <h2 class="question" id="questionText"></h2>
+      <div class="choices" id="choices"></div>
+      <p class="small-note">Choose the answer that feels right. 😊</p>
+    </section>
+
+    <section id="last" class="hidden">
+      <div class="final">
+        <h2>I DIDN'T FORGET ABOUT YOU. ❤️</h2>
+        <p><strong>I remember my promise.</strong></p>
+        <p>I promised you a date, and I intend to keep that promise.</p>
+        <p>I know you've been patient with me, and I genuinely appreciate that. Work has kept me busy, but I don't want that to sound like an excuse.</p>
+        <p>I still like you, and I haven't forgotten about our date. So please, be a little patient with me. I haven't forgotten, and I won't forget. ❤️</p>
+        <p><strong>We still have a date to make happen. 😉</strong></p>
+        <p class="signature">— Mark</p>
+        <div class="final-question">So, will you go on that date with me?</div>
+        <div class="final-choices">
+          <button class="choice" data-final="YES, MARK! ❤️">YES, MARK! ❤️</button>
+          <button class="choice" data-final="LET ME THINK 🤭">LET ME THINK 🤭</button>
+        </div>
+      </div>
+      <button class="primary hidden" id="finish">Finish ❤️</button>
+      <p class="small-note">When you finish, your answers will be placed in a WhatsApp message to Mark. You can review it and choose whether to send it.</p>
+    </section>
+  </div>
+</section>
+<footer>Made with a little thought, from Mark. ❤️</footer>
+</main>
+<div class="reaction" id="reaction" aria-live="polite">
+  <div><div class="reaction-bubble" id="reactionEmoji">💗</div><div class="reaction-caption" id="reactionCaption"></div></div>
+</div>
+<script>
+const questions = [
+ {text:"Have you been patiently waiting for someone to take you on a date?", options:[
+  {label:"YES ❤️",value:"YES",emoji:"🥰💖✨",caption:"Awww, that's sweet!"},
+  {label:"NO",value:"NO",emoji:"🥺💧",caption:"Oh no!"},
+  {label:"MAYBE 😂",value:"MAYBE",emoji:"🤭💗",caption:"Keeping me guessing!"}]},
+ {text:"If I make that date happen, would you give me a chance?", options:[
+  {label:"YES ❤️",value:"YES",emoji:"😍💞💘",caption:"You just made me smile!"},
+  {label:"NO",value:"NO",emoji:"🥺💔",caption:"A little heartbreak!"},
+  {label:"MAYBE 😉",value:"MAYBE",emoji:"🥹🌧️",caption:"I'll be hopeful…"}]},
+ {text:"A good conversation, laughter and a little quality time at the park. Does that sound like a good plan?", options:[
+  {label:"ABSOLUTELY ❤️",value:"ABSOLUTELY",emoji:"🌹🥰💖",caption:"Now that's a lovely plan!"},
+  {label:"NOT SURE",value:"NOT SURE",emoji:"🥺💭",caption:"I'll let you think about it."},
+  {label:"MAYBE 😉",value:"MAYBE",emoji:"🤭💗",caption:"Maybe can turn into yes!"}]}
+];
+const answers=[];
+let finalAnswer=null,index=0;
+const $=id=>document.getElementById(id);
+function showReaction(emoji,caption){
+ $('reactionEmoji').textContent=emoji;$('reactionCaption').textContent=caption;
+ $('reaction').classList.add('show');
+ if(emoji.includes('💖')||emoji.includes('💗')||emoji.includes('💞')||emoji.includes('😍')||emoji.includes('🌹')) hearts();
+ setTimeout(()=>$('reaction').classList.remove('show'),1050);
+}
+function hearts(){
+ const symbols=['💗','💕','💖','✨','❤️'];
+ for(let i=0;i<13;i++){
+  const el=document.createElement('span');el.className='float';el.textContent=symbols[Math.floor(Math.random()*symbols.length)];
+  el.style.left=(Math.random()*94)+'vw';el.style.animationDelay=(Math.random()*.35)+'s';document.body.appendChild(el);setTimeout(()=>el.remove(),2100);
+ }
+}
+function renderQuestion(){
+ $('welcome').classList.add('hidden');$('last').classList.add('hidden');$('quiz').classList.remove('hidden');
+ $('stepLabel').textContent=`Question ${index+1} of 3`;
+ $('progress').style.width=((index)/3*100)+'%';
+ $('questionText').textContent=questions[index].text;
+ const holder=$('choices');holder.innerHTML='';
+ questions[index].options.forEach(option=>{
+  const b=document.createElement('button');b.className='choice';b.textContent=option.label;
+  b.addEventListener('click',()=>{
+   answers[index]=option.value;
+   showReaction(option.emoji,option.caption);
+   setTimeout(()=>{index++;if(index<questions.length)renderQuestion();else showFinal();},1080);
+  });
+  holder.appendChild(b);
+ });
+}
+function showFinal(){
+ $('quiz').classList.add('hidden');$('last').classList.remove('hidden');$('progress').style.width='100%';
+}
+$('start').addEventListener('click',()=>{index=0;renderQuestion();});
+document.querySelectorAll('[data-final]').forEach(b=>b.addEventListener('click',()=>{
+ document.querySelectorAll('[data-final]').forEach(x=>x.classList.remove('selected'));
+ b.classList.add('selected');finalAnswer=b.dataset.final;$('finish').classList.remove('hidden');
+ if(finalAnswer.startsWith('YES'))showReaction('💖🥰💘','You made Mark smile!');
+ else showReaction('🥺🤍','Take your time. No pressure.');
+}));
+$('finish').addEventListener('click',()=>{
+ const message=`Hi Mark! ❤️ Here are my answers:\n\n1. Have I been patiently waiting for a date? ${answers[0]}\n2. If you make the date happen, would I give you a chance? ${answers[1]}\n3. Does a chat, laughter and time at the park sound good? ${answers[2]}\n\nMy answer to your date invitation: ${finalAnswer}\n\n— Sent from your little surprise`;
+ window.location.href='https://wa.me/27814082887?text='+encodeURIComponent(message);
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#21172b">
+<title>A Date I Never Forgot — From Mark</title>
+<style>
+:root{--plum:#21172b;--rose:#f3c8da;--pink:#f8eaf1;--ink:#43283a;--muted:#71596a}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;font-family:Georgia,'Times New Roman',serif;background:radial-gradient(circle at top,#594056 0,#21172b 52%,#17121e 100%);color:#fff;display:flex;justify-content:center;padding:22px 14px}
+main{width:min(100%,520px);margin:auto}
+.card{background:#fffafc;color:var(--ink);border-radius:25px;overflow:hidden;box-shadow:0 22px 70px #09060c88}
+.hero{padding:34px 25px 27px;text-align:center;background:linear-gradient(145deg,#39253d,#21172b)}
+.eyebrow{letter-spacing:2px;text-transform:uppercase;font:11px Arial,sans-serif;color:#f3c8da}
+h1{font-size:clamp(30px,8vw,43px);line-height:1.05;margin:13px 0;color:#ffe5ef;font-weight:normal}
+.hero p{color:#f4e8f0;line-height:1.6;margin:0 auto;max-width:370px;font-size:16px}
+.heart{font-size:28px;margin-top:14px;display:block;animation:pulse 1.6s infinite}
+@keyframes pulse{50%{transform:scale(1.16)}}
+.content{padding:25px 22px 28px}
+.intro{text-align:center;line-height:1.6;margin:0 0 24px;color:#65495b}
+.question{padding:18px 0;border-top:1px solid #ead9e2}
+.question h2{font-size:19px;font-weight:normal;line-height:1.35;margin:0 0 14px}
+.choices{display:flex;flex-wrap:wrap;gap:9px}
+.choice{border:1px solid #dfc4d2;background:#fff;color:#5d3b50;border-radius:999px;padding:10px 15px;font:600 13px Arial,sans-serif;cursor:pointer;transition:.15s}
+.choice.selected{background:#713c60;color:#fff;border-color:#713c60;box-shadow:0 3px 10px #713c6033}
+.choice:focus-visible,.submit:focus-visible{outline:3px solid #c879a0;outline-offset:3px}
+.final{margin-top:20px;padding:22px 18px;border-radius:18px;background:#f8eaf1;text-align:center}
+.final h2{font-size:26px;margin:0 0 13px;color:#9d315f}
+.final p{line-height:1.65;margin:10px 0;color:#57364b}
+.final .signature{font-style:italic;font-size:18px;margin-top:16px}
+.final-choices{justify-content:center;margin-top:17px}
+.submit{width:100%;margin-top:20px;border:0;border-radius:999px;padding:15px 18px;background:#713c60;color:white;font:bold 15px Arial,sans-serif;cursor:pointer}
+.submit:disabled{opacity:.45;cursor:not-allowed}
+.hint{text-align:center;color:#806a79;font:12px Arial,sans-serif;line-height:1.5;margin:12px 8px 0}
+.status{min-height:18px;text-align:center;color:#9d315f;font:13px Arial,sans-serif;margin-top:9px}
+footer{text-align:center;color:#e8d4e0;font:12px Arial,sans-serif;margin:18px 0 0}
+@media(max-width:380px){.content{padding:21px 17px}.choice{padding:9px 12px}}
+</style>
+</head>
+<body>
+<main>
+  <section class="card">
+    <header class="hero">
+      <div class="eyebrow">A little surprise for you</div>
+      <h1>Hey, beautiful! ❤️</h1>
+      <p>Can I ask you something? Before you answer, I hope you know someone has been thinking about that promised date...</p>
+      <span class="heart">♡</span>
+    </header>
+    <div class="content">
+      <p class="intro">I have a few little questions for you. Be honest — there are no wrong answers. 😊</p>
+
+      <section class="question" data-question="1">
+        <h2>1. Have you been patiently waiting for someone to take you on a date?</h2>
+        <div class="choices">
+          <button class="choice" data-value="YES">YES ❤️</button>
+          <button class="choice" data-value="NO">NO</button>
+          <button class="choice" data-value="MAYBE">MAYBE 😂</button>
+        </div>
+      </section>
+
+      <section class="question" data-question="2">
+        <h2>2. If someone finally decided to make that date happen, would you give him a chance?</h2>
+        <div class="choices">
+          <button class="choice" data-value="YES">YES ❤️</button>
+          <button class="choice" data-value="NO">NO</button>
+          <button class="choice" data-value="MAYBE">MAYBE 😉</button>
+        </div>
+      </section>
+
+      <section class="question" data-question="3">
+        <h2>3. Dinner, good conversation, laughter and a little quality time. Does that sound like a good plan?</h2>
+        <div class="choices">
+          <button class="choice" data-value="YES">ABSOLUTELY ❤️</button>
+          <button class="choice" data-value="NO">NOT SURE</button>
+          <button class="choice" data-value="MAYBE">MAYBE 😉</button>
+        </div>
+      </section>
+
+      <section class="final">
+        <h2>I DIDN'T FORGET ABOUT YOU. ❤️</h2>
+        <p><strong>I remember my promise.</strong></p>
+        <p>I promised you a date, and I intend to keep that promise.</p>
+        <p>I know you've been patient with me, and I genuinely appreciate that. Work has kept me busy, but I don't want that to sound like an excuse.</p>
+        <p>I still like you, and I haven't forgotten about our date. So please, be a little patient with me. I haven't forgotten, and I won't forget. ❤️</p>
+        <p><strong>We still have a date to make happen. 😉</strong></p>
+        <p class="signature">— Mark</p>
+        <h2 style="font-size:21px;margin-top:22px">So, will you go on that date with me?</h2>
+        <div class="choices final-choices">
+          <button class="choice" id="finalYes" data-value="YES, MARK! ❤️">YES, MARK! ❤️</button>
+          <button class="choice" id="finalThink" data-value="LET ME THINK 🤭">LET ME THINK 🤭</button>
+        </div>
+      </section>
+
+      <button class="submit" id="send" disabled>SEND MY ANSWERS TO MARK ❤️</button>
+      <p class="hint">Your answers will open in WhatsApp as a message to Mark. Just tap <strong>Send</strong> in WhatsApp to share them.</p>
+      <div class="status" id="status" aria-live="polite"></div>
+    </div>
+  </section>
+  <footer>Made with a little thought, from Mark. ❤️</footer>
+</main>
+<script>
+const answers = {q1:null,q2:null,q3:null,final:null};
+document.querySelectorAll('.question').forEach(section=>{
+  const key='q'+section.dataset.question;
+  section.querySelectorAll('.choice').forEach(button=>{
+    button.addEventListener('click',()=>{
+      section.querySelectorAll('.choice').forEach(b=>b.classList.remove('selected'));
+      button.classList.add('selected');
+      answers[key]=button.dataset.value;
+      updateSend();
+    });
+  });
+});
+[['finalYes','YES, MARK! ❤️'],['finalThink','LET ME THINK 🤭']].forEach(([id,value])=>{
+  document.getElementById(id).addEventListener('click',()=>{
+    document.getElementById('finalYes').classList.remove('selected');
+    document.getElementById('finalThink').classList.remove('selected');
+    document.getElementById(id).classList.add('selected');
+    answers.final=value;
+    updateSend();
+  });
+});
+const send=document.getElementById('send');
+function updateSend(){send.disabled=!(answers.q1&&answers.q2&&answers.q3&&answers.final);}
+send.addEventListener('click',()=>{
+  if(send.disabled)return;
+  const message =
+`Hi Mark! ❤️ Here are my answers:
+
+1. Have I been patiently waiting for a date? ${answers.q1}
+2. Would I give him a chance? ${answers.q2}
+3. Does dinner and quality time sound good? ${answers.q3}
+
+My answer to your date invitation: ${answers.final}
+
+— Sent from your little surprise`;
+  const url='https://wa.me/27814082887?text='+encodeURIComponent(message);
+  document.getElementById('status').textContent='Opening WhatsApp with your answers…';
+  window.location.href=url;
+});
+</script>
+</body>
+</html>
